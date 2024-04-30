@@ -1,0 +1,112 @@
+[
+    {
+      "projectName": "GUZI",
+      "projectLocation": "Schwabach",
+      "projectCountry": "Deutschland",
+      "projectInfrastructure": "Urbaner Zwilling",
+      "projectLevel": "Deskriptiv",
+      "projectLatitude": "49.32895",
+      "projectLongitude": "11.02172",
+      "projectLink": "https://www.youtube.com/watch?v=UqWSDj1Gm5Q",
+      "projectActive": true
+    },
+    {
+      "projectName": "Digitaler Zwilling Forchheim",
+      "projectLocation": "Forchheim",
+      "projectCountry": "Deutschland",
+      "projectInfrastructure": "Urbaner Zwilling",
+      "projectLevel": "Deskriptiv",
+      "projectLatitude": "49.71982",
+      "projectLongitude": "11.05776",
+      "projectLink": "https://dz.forchheim.de/",
+      "projectActive": true
+    },
+    {
+      "projectName": "smartBridge Hamburg",
+      "projectLocation": "Hamburg",
+      "projectCountry": "Deutschland",
+      "projectInfrastructure": "Brücke",
+      "projectLevel": "Deskriptiv",
+      "projectLatitude": "53.5192",
+      "projectLongitude": "9.9411",
+      "projectLink": "https://www.homeport.hamburg/portfolio/smartbridge",
+      "projectActive": true
+    },
+    {
+      "projectName": "DigiTal",
+      "projectLocation": "Wuppertal",
+      "projectCountry": "Deutschland",
+      "projectInfrastructure": "Urbaner Digitaler Zwilling",
+      "projectLevel": "Informativ",
+      "projectLatitude": "51.27217",
+      "projectLongitude": "7.20008",
+      "projectLink": "https://www.homeport.hamburg/portfolio/smartbridge",
+      "projectActive": true
+    },
+    {
+      "projectName": "Braunschweig - 3D-Stadtmodell",
+      "projectLocation": "Braunschweig",
+      "projectCountry": "Deutschland",
+      "projectInfrastructure": "Urbaner Digitaler Zwilling",
+      "projectLevel": "Deskriptiv",
+      "projectLatitude": "52.26462",
+      "projectLongitude": "10.52490",
+      "projectLink": "https://www.braunschweig.de/leben/stadtplanung_bauen/geoinformationen/stadtmodell.php",
+      "projectActive": true
+    },
+    {
+      "projectName": "Smart Herrenberg",
+      "projectLocation": "Herrenberg",
+      "projectCountry": "Deutschland",
+      "projectInfrastructure": "Urbaner Digitaler Zwilling",
+      "projectLevel": "Deskriptiv",
+      "projectLatitude": "48.59651",
+      "projectLongitude": "8.87040",
+      "projectLink": "https://www.herrenberg.de/de/Stadtleben/Wirtschaft/Smart-Herrenberg",
+      "projectActive": true
+    },
+    {
+      "projectName": "Digitaler Zwilling Kempten",
+      "projectLocation": "Kempten (Allgäu)",
+      "projectCountry": "Deutschland",
+      "projectInfrastructure": "Urbaner Digitaler Zwilling",
+      "projectLevel": "Deskriptiv",
+      "projectLatitude": "47.72641",
+      "projectLongitude": "10.31688",
+      "projectLink": "https://www.kempten.de/kempten-auf-dem-weg-zur-modellstadt-smart-city-25396.html",
+      "projectActive": true
+    },
+    {
+      "projectName": "Stadt Krefeld 3D",
+      "projectLocation": "Krefeld",
+      "projectCountry": "Deutschland",
+      "projectInfrastructure": "Urbaner Digitaler Zwilling",
+      "projectLevel": "Informativ",
+      "projectLatitude": "51.3457",
+      "projectLongitude": "6.5492",
+      "projectLink": "https://www.krefeld.de/de/vermessung/3d-geoportal-krefeld/",
+      "projectActive": true
+    },
+    {
+      "projectName": "Digitaler Zwilling Landkreis Hof",
+      "projectLocation": "Landkreis Hof",
+      "projectCountry": "Deutschland",
+      "projectInfrastructure": "Urbaner Digitaler Zwilling",
+      "projectLevel": "Informativ",
+      "projectLatitude": "50.2643",
+      "projectLongitude": "11.8454",
+      "projectLink": "https://www.landkreis-hof.de/neu-smart-city-startet-mit-umsetzung-der-urbanen-datenplattform-und-des-digitalen-zwillings/",
+      "projectActive": true
+    },
+    {
+      "projectName": "Nibelungenbrücke",
+      "projectLocation": "Worms",
+      "projectCountry": "Deutschland",
+      "projectInfrastructure": "Brücke",
+      "projectLevel": "Präskreptiv",
+      "projectLatitude": "49.63087",
+      "projectLongitude": "8.37766",
+      "projectLink": "https://www.spp100plus.de/ueber-uns/validierungsbauwerk-die-nibelungenbruecke-worms/",
+      "projectActive": true
+    }
+]

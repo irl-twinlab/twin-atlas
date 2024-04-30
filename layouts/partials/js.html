@@ -3,11 +3,11 @@
 <script src="/js/leaflet.bundle.min.js"></script>
 <script>
     // definitions
-    const items = $('.sItem'); // all shops in the list
-    const item = $('.sItem--offline'); // each shop
-    const startZoom = 11; //Define zoom level - 13 = default | 19 = max
-    const startLat = 48.208726;
-    const startLon = 16.372644;
+    const items = $('.sItem'); // all projects in the list
+    const item = $('.sItem--offline'); // each project
+    const startZoom = 6; //Define zoom level - 13 = default | 19 = max
+    const startLat = 51.1642;
+    const startLon = 10.4541;
     // create Map
     var mymap = L.map('map', {scrollWheelZoom: false}).setView([startLat, startLon], startZoom);
     // Add tiles
@@ -19,13 +19,13 @@
     L.control.locate().addTo(mymap);
 
     // zoom options enable/disable
-    mymap.on('click', () => { mymap.scrollWheelZoom.enable();});
-    mymap.on('mouseout', () => { mymap.scrollWheelZoom.disable();});
+    mymap.on('click', () => { mymap.scrollWheelZoom.disable();});
+    mymap.on('mouseout', () => { mymap.scrollWheelZoom.enable();});
 
     // create marker cluster layer
     var markers = L.markerClusterGroup();
 
-    // iterate stores, add markers to map
+    // iterate projects, add markers to map
     for(let i = 0; i < items.length; i++) {
         let iLat = items[i].getAttribute('data-lat');
         let iLon = items[i].getAttribute('data-lon');
@@ -33,10 +33,10 @@
         if(!isEmpty(iLat) | !isEmpty(iLon)) {
             // get popup info
             let name = items[i].getAttribute('data-name');
-            let ad = items[i].getAttribute('data-add');
-            let plz = items[i].getAttribute('data-plz');
+            let inf = items[i].getAttribute('data-inf');
+            let lin = items[i].getAttribute('data-link');
             // create marker with associated popup
-            markers.addLayer(L.marker([iLat,iLon],{key:iLat+'__'+iLon}).bindPopup("<b>" + name + "</b>" + "<br>" + ad + ", " + plz)); // marker added to cluster layer
+            markers.addLayer(L.marker([iLat,iLon],{key:iLat+'__'+iLon}).bindPopup("<b>" + name + "</b>" + "<br>" + inf + "<br>" + '<a href="' + lin + '" target="_blank">Mehr Informationen</a>' )); // marker added to cluster layer
             // we use an ID made up of iLat and iLon here, so we can find the marker again later
         }
     }
@@ -56,7 +56,7 @@
             // find the correct marker
             markers.eachLayer(function(layer) {
                 if(layer.options.key === id) {
-                    mymap.setView([pLat,pLon], 19); // move to the selected item and zoom in
+                    mymap.setView([pLat,pLon], 12); // move to the selected item and zoom in
                     layer.openPopup()
                 }
             });
@@ -69,35 +69,45 @@
         mymap.setView([startLat, startLon], startZoom);
     }
 
-    // store search
-    function findStore() {
-        const searchInput = $('#storefinder');
+    // project search
+    function findProject() {
+        const searchInput = $('#projectfinder');
         const hidden = 'sItem--hidden';
         const result = $('#result');
-
+    
         let filter = searchInput.val().toUpperCase();
-        let count = 0; // reset on each function call
-
+        let count = 0; 
+    
+        // Clear existing markers from the map
+        markers.clearLayers();
+    
         for (let i = 0; i < items.length; i++) {
-            let plz = items[i].getAttribute('data-plz').toUpperCase();
-            let cty = items[i].getAttribute('data-cty').toUpperCase();
-            if (plz.toUpperCase().indexOf(filter) > -1) { // check PLZ
+            let inf = items[i].getAttribute('data-inf').toUpperCase();
+            let loc = items[i].getAttribute('data-loc').toUpperCase();
+            if (inf.indexOf(filter) > -1 || loc.indexOf(filter) > -1) { 
                 items[i].classList.remove(hidden);
-                count = count + 1;
-            } else if (cty.toUpperCase().indexOf(filter) > -1) { // PLZ not found, check country
-                items[i].classList.remove(hidden);
-                count = count + 1;
-            } else { // nothing found
+                let iLat = items[i].getAttribute('data-lat');
+                let iLon = items[i].getAttribute('data-lon');
+                if (!isEmpty(iLat) && !isEmpty(iLon)) {
+                    let name = items[i].getAttribute('data-name');
+                    let lin = items[i].getAttribute('data-link');
+                    markers.addLayer(L.marker([iLat, iLon], {key: iLat + '__' + iLon}).bindPopup("<b>" + name + "</b>" + "<br>" + inf + "<br>" + '<a href="' + lin + '" target="_blank">Mehr Informationen</a>'));
+                    count++;
+                }
+            } else { 
                 items[i].classList.add(hidden);
             }
         }
-        result.html(count + ' Shops - <a href="javascript:clearSearch();">Reset</a>'); // print the seartch result
+        // Add filtered markers to the map
+        mymap.addLayer(markers);
+    
+        result.html(count + ' Projekte - <a href="javascript:clearSearch();">Zurücksetzen</a>'); 
     }
 
     // clear search
     function clearSearch() {
-        document.getElementById('storefinder').value = '';
-        findStore();
+        document.getElementById('projectfinder').value = '';
+        findProject();
         resetMap();
     }
 

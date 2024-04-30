@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.124.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preload" href="//localhost:1313/css/page.css" as="style">
+    <link rel="preload" href="//localhost:1313/js/jquery-3.3.1.min.js" as="script">
+    <link rel="preload" href="//localhost:1313/js/bootstrap.bundle.min.js" as="script">
+    <link rel="preload" href="//localhost:1313/css/leaflet.bundle.css" as="style">
+    <link rel="preload" href="//localhost:1313/js/leaflet.bundle.min.js" as="script">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Ein Atlas aktueller Twin-Pojekt.">
+<meta name="author" content="ttntm">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#ffffff">
+<base href="//localhost:1313/">
+<title>Twin.Lab Atlas</title>
+<link rel="stylesheet" href="//localhost:1313/css/page.css">
+<link rel="stylesheet" href="//localhost:1313/css/leaflet.bundle.css">
+    
+</head>
+<body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 py-3 mx-auto flex-column">
+        
+            <header class="masthead px-5 mb-auto">
+    <div class="inner">
+        <h1 class="h4 masthead-brand">Twin.Lab Atlas</h1>
+        <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" href="https://irl-twinlab.github.io">Zur Projektseite</a>
+        </nav>
+    </div>
+</header>
+
+        
+        <main role="main" class="inner cover">
+            
+    
+    <div class="container">
+    
+        <div class="row map-border my-5">
+            <div class="col-12 col-md-5 col-lg-4 order-2 order-md-1 px-md-0">
+                
+                <div class="p-4">
+                    <div class="input-group shadow-sm mt-3">
+                        <input class="form-control border-0" type="text" id="projectfinder" onkeyup="findProject();" placeholder="Stadt, Titel oder Infrastruktur">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary bg-white text-secondary border-0 py-0" type="submit">Finden</button>
+                        </div>
+                    </div>
+                    <p id="result" class="small text-center mt-3 mb-0"></p>
+                </div>
+                
+                <div class="project-container d-flex flex-column flex-nowrap align-content-start px-md-0">
+                
+                    
+                        <div class="sItem flex-grow-0 px-0 py-2 p-md-2" data-name="Braunschweig - 3D-Stadtmodell" data-loc="Braunschweig" data-cnt="Deutschland" data-lat="52.26462" data-lon="10.52490"  data-inf="Urbaner Digitaler Zwilling" data-lvl="Deskriptiv" data-link="https://www.braunschweig.de/leben/stadtplanung_bauen/geoinformationen/stadtmodell.php">
+                            <div class="sItem--offline rounded-lg shadow-sm px-3 py-2">
+                                <h5 class="h6 mb-0">Braunschweig - 3D-Stadtmodell</h5>
+                                <p class="small mt-1 mb-0">Braunschweig<br>Urbaner Digitaler Zwilling<br><a href="https://www.braunschweig.de/leben/stadtplanung_bauen/geoinformationen/stadtmodell.php" target="_blank">Mehr Informationen</a></p>
+                            </div>
+                        </div>
+                    
+                
+                    
+                        <div class="sItem flex-grow-0 px-0 py-2 p-md-2" data-name="Digitaler Zwilling Forchheim" data-loc="Forchheim" data-cnt="Deutschland" data-lat="49.71982" data-lon="11.05776"  data-inf="Urbaner Zwilling" data-lvl="Deskriptiv" data-link="https://dz.forchheim.de/">
+                            <div class="sItem--offline rounded-lg shadow-sm px-3 py-2">
+                                <h5 class="h6 mb-0">Digitaler Zwilling Forchheim</h5>
+                                <p class="small mt-1 mb-0">Forchheim<br>Urbaner Zwilling<br><a href="https://dz.forchheim.de/" target="_blank">Mehr Informationen</a></p>
+                            </div>
+                        </div>
+                    
+                
+                    
+                        <div class="sItem flex-grow-0 px-0 py-2 p-md-2" data-name="smartBridge Hamburg" data-loc="Hamburg" data-cnt="Deutschland" data-lat="53.5192" data-lon="9.9411"  data-inf="Brücke" data-lvl="Deskriptiv" data-link="https://www.homeport.hamburg/portfolio/smartbridge">
+                            <div class="sItem--offline rounded-lg shadow-sm px-3 py-2">
+                                <h5 class="h6 mb-0">smartBridge Hamburg</h5>
+                                <p class="small mt-1 mb-0">Hamburg<br>Brücke<br><a href="https://www.homeport.hamburg/portfolio/smartbridge" target="_blank">Mehr Informationen</a></p>
+                            </div>
+                        </div>
+                    
+                
+                    
+                        <div class="sItem flex-grow-0 px-0 py-2 p-md-2" data-name="Smart Herrenberg" data-loc="Herrenberg" data-cnt="Deutschland" data-lat="48.59651" data-lon="8.87040"  data-inf="Urbaner Digitaler Zwilling" data-lvl="Deskriptiv" data-link="https://www.herrenberg.de/de/Stadtleben/Wirtschaft/Smart-Herrenberg">
+                            <div class="sItem--offline rounded-lg shadow-sm px-3 py-2">
+                                <h5 class="h6 mb-0">Smart Herrenberg</h5>
+                                <p class="small mt-1 mb-0">Herrenberg<br>Urbaner Digitaler Zwilling<br><a href="https://www.herrenberg.de/de/Stadtleben/Wirtschaft/Smart-Herrenberg" target="_blank">Mehr Informationen</a></p>
+                            </div>
+                        </div>
+                    
+                
+                    
+                        <div class="sItem flex-grow-0 px-0 py-2 p-md-2" data-name="Digitaler Zwilling Kempten" data-loc="Kempten (Allgäu)" data-cnt="Deutschland" data-lat="47.72641" data-lon="10.31688"  data-inf="Urbaner Digitaler Zwilling" data-lvl="Deskriptiv" data-link="https://www.kempten.de/kempten-auf-dem-weg-zur-modellstadt-smart-city-25396.html">
+                            <div class="sItem--offline rounded-lg shadow-sm px-3 py-2">
+                                <h5 class="h6 mb-0">Digitaler Zwilling Kempten</h5>
+                                <p class="small mt-1 mb-0">Kempten (Allgäu)<br>Urbaner Digitaler Zwilling<br><a href="https://www.kempten.de/kempten-auf-dem-weg-zur-modellstadt-smart-city-25396.html" target="_blank">Mehr Informationen</a></p>
+                            </div>
+                        </div>
+                    
+                
+                    
+                        <div class="sItem flex-grow-0 px-0 py-2 p-md-2" data-name="Stadt Krefeld 3D" data-loc="Krefeld" data-cnt="Deutschland" data-lat="51.3457" data-lon="6.5492"  data-inf="Urbaner Digitaler Zwilling" data-lvl="Informativ" data-link="https://www.krefeld.de/de/vermessung/3d-geoportal-krefeld/">
+                            <div class="sItem--offline rounded-lg shadow-sm px-3 py-2">
+                                <h5 class="h6 mb-0">Stadt Krefeld 3D</h5>
+                                <p class="small mt-1 mb-0">Krefeld<br>Urbaner Digitaler Zwilling<br><a href="https://www.krefeld.de/de/vermessung/3d-geoportal-krefeld/" target="_blank">Mehr Informationen</a></p>
+                            </div>
+                        </div>
+                    
+                
+                    
+                        <div class="sItem flex-grow-0 px-0 py-2 p-md-2" data-name="Digitaler Zwilling Landkreis Hof" data-loc="Landkreis Hof" data-cnt="Deutschland" data-lat="50.2643" data-lon="11.8454"  data-inf="Urbaner Digitaler Zwilling" data-lvl="Informativ" data-link="https://www.landkreis-hof.de/neu-smart-city-startet-mit-umsetzung-der-urbanen-datenplattform-und-des-digitalen-zwillings/">
+                            <div class="sItem--offline rounded-lg shadow-sm px-3 py-2">
+                                <h5 class="h6 mb-0">Digitaler Zwilling Landkreis Hof</h5>
+                                <p class="small mt-1 mb-0">Landkreis Hof<br>Urbaner Digitaler Zwilling<br><a href="https://www.landkreis-hof.de/neu-smart-city-startet-mit-umsetzung-der-urbanen-datenplattform-und-des-digitalen-zwillings/" target="_blank">Mehr Informationen</a></p>
+                            </div>
+                        </div>
+                    
+                
+                    
+                        <div class="sItem flex-grow-0 px-0 py-2 p-md-2" data-name="GUZI" data-loc="Schwabach" data-cnt="Deutschland" data-lat="49.32895" data-lon="11.02172"  data-inf="Urbaner Zwilling" data-lvl="Deskriptiv" data-link="https://www.youtube.com/watch?v=UqWSDj1Gm5Q">
+                            <div class="sItem--offline rounded-lg shadow-sm px-3 py-2">
+                                <h5 class="h6 mb-0">GUZI</h5>
+                                <p class="small mt-1 mb-0">Schwabach<br>Urbaner Zwilling<br><a href="https://www.youtube.com/watch?v=UqWSDj1Gm5Q" target="_blank">Mehr Informationen</a></p>
+                            </div>
+                        </div>
+                    
+                
+                    
+                        <div class="sItem flex-grow-0 px-0 py-2 p-md-2" data-name="Nibelungenbrücke" data-loc="Worms" data-cnt="Deutschland" data-lat="49.63087" data-lon="8.37766"  data-inf="Brücke" data-lvl="Präskreptiv" data-link="https://www.spp100plus.de/ueber-uns/validierungsbauwerk-die-nibelungenbruecke-worms/">
+                            <div class="sItem--offline rounded-lg shadow-sm px-3 py-2">
+                                <h5 class="h6 mb-0">Nibelungenbrücke</h5>
+                                <p class="small mt-1 mb-0">Worms<br>Brücke<br><a href="https://www.spp100plus.de/ueber-uns/validierungsbauwerk-die-nibelungenbruecke-worms/" target="_blank">Mehr Informationen</a></p>
+                            </div>
+                        </div>
+                    
+                
+                    
+                        <div class="sItem flex-grow-0 px-0 py-2 p-md-2" data-name="DigiTal" data-loc="Wuppertal" data-cnt="Deutschland" data-lat="51.27217" data-lon="7.20008"  data-inf="Urbaner Digitaler Zwilling" data-lvl="Informativ" data-link="https://www.homeport.hamburg/portfolio/smartbridge">
+                            <div class="sItem--offline rounded-lg shadow-sm px-3 py-2">
+                                <h5 class="h6 mb-0">DigiTal</h5>
+                                <p class="small mt-1 mb-0">Wuppertal<br>Urbaner Digitaler Zwilling<br><a href="https://www.homeport.hamburg/portfolio/smartbridge" target="_blank">Mehr Informationen</a></p>
+                            </div>
+                        </div>
+                    
+                
+                </div>
+            </div>
+            
+            <div class="col-12 col-md-7 col-lg-8 map-container order-1 order-md-2 px-0">
+                <div id="map" style="width:100%;height:100%;"></div>
+            </div>
+        </div>
+    </div>
+
+        </main>
+        
+            <footer class="mastfoot mt-auto">
+    <div class="inner">
+<p>Originalprojekt: https://github.com/ttntm/hugo-leaflet-store-locator </p>
+    </div>
+</footer>
+        
+    </div>
+    <script src="//localhost:1313/js/jquery-3.3.1.min.js"></script>
+<script src="//localhost:1313/js/bootstrap.bundle.min.js"></script>
+<script src="//localhost:1313/js/leaflet.bundle.min.js"></script>
+<script>
+    
+    const items = $('.sItem'); 
+    const item = $('.sItem--offline'); 
+    const startZoom = 6; 
+    const startLat = 51.1642;
+    const startLon = 10.4541;
+    
+    var mymap = L.map('map', {scrollWheelZoom: false}).setView([startLat, startLon], startZoom);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors | <a href="javascript:resetMap();">Reset map</a>'
+    }).addTo(mymap);
+
+    
+    L.control.locate().addTo(mymap);
+
+    
+    mymap.on('click', () => { mymap.scrollWheelZoom.disable();});
+    mymap.on('mouseout', () => { mymap.scrollWheelZoom.enable();});
+
+    
+    var markers = L.markerClusterGroup();
+
+    
+    for(let i = 0; i < items.length; i++) {
+        let iLat = items[i].getAttribute('data-lat');
+        let iLon = items[i].getAttribute('data-lon');
+
+        if(!isEmpty(iLat) | !isEmpty(iLon)) {
+            
+            let name = items[i].getAttribute('data-name');
+            let inf = items[i].getAttribute('data-inf');
+            let lin = items[i].getAttribute('data-link');
+            
+            markers.addLayer(L.marker([iLat,iLon],{key:iLat+'__'+iLon}).bindPopup("<b>" + name + "</b>" + "<br>" + inf + "<br>" + '<a href="' + lin + '" target="_blank">Mehr Informationen</a>' )); 
+            
+        }
+    }
+
+    
+    mymap.addLayer(markers);
+
+    
+    item.click(function(){
+        let ct = $(this);
+        let pt = ct.parent(); 
+        let pLat = pt.attr('data-lat');
+        let pLon = pt.attr('data-lon');
+        let id = pLat + '__' + pLon;
+
+        if(!isEmpty(pLat) | !isEmpty(pLon)) {
+            
+            markers.eachLayer(function(layer) {
+                if(layer.options.key === id) {
+                    mymap.setView([pLat,pLon], 12); 
+                    layer.openPopup()
+                }
+            });
+        }
+    });
+
+    
+    function resetMap() {
+        mymap.closePopup();
+        mymap.setView([startLat, startLon], startZoom);
+    }
+
+    
+    function findProject() {
+        const searchInput = $('#projectfinder');
+        const hidden = 'sItem--hidden';
+        const result = $('#result');
+    
+        let filter = searchInput.val().toUpperCase();
+        let count = 0; 
+    
+        
+        markers.clearLayers();
+    
+        for (let i = 0; i < items.length; i++) {
+            let inf = items[i].getAttribute('data-inf').toUpperCase();
+            let loc = items[i].getAttribute('data-loc').toUpperCase();
+            if (inf.indexOf(filter) > -1 || loc.indexOf(filter) > -1) { 
+                items[i].classList.remove(hidden);
+                let iLat = items[i].getAttribute('data-lat');
+                let iLon = items[i].getAttribute('data-lon');
+                if (!isEmpty(iLat) && !isEmpty(iLon)) {
+                    let name = items[i].getAttribute('data-name');
+                    let lin = items[i].getAttribute('data-link');
+                    markers.addLayer(L.marker([iLat, iLon], {key: iLat + '__' + iLon}).bindPopup("<b>" + name + "</b>" + "<br>" + inf + "<br>" + '<a href="' + lin + '" target="_blank">Mehr Informationen</a>'));
+                    count++;
+                }
+            } else { 
+                items[i].classList.add(hidden);
+            }
+        }
+        
+        mymap.addLayer(markers);
+    
+        result.html(count + ' Projekte - <a href="javascript:clearSearch();">Zurücksetzen</a>'); 
+    }
+
+    
+    function clearSearch() {
+        document.getElementById('projectfinder').value = '';
+        findProject();
+        resetMap();
+    }
+
+    
+    function isEmpty(str) {
+        return (!str || 0 === str.length);
+    }
+</script>
+</body>
+</html>

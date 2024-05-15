@@ -108,5 +108,27 @@
       "projectLongitude": "8.37766",
       "projectLink": "https://www.spp100plus.de/ueber-uns/validierungsbauwerk-die-nibelungenbruecke-worms/",
       "projectActive": true
+    },
+    {
+      "projectName": "Digitaler Stadtzwilling Stuttgart",
+      "projectLocation": "Stuttgart",
+      "projectCountry": "Deutschland",
+      "projectInfrastructure": "Urbaner Digitaler Zwilling",
+      "projectLevel": "Informativ",
+      "projectLatitude": "48.7795",
+      "projectLongitude": "9.1770",
+      "projectLink": "https://www.stuttgart.de/leben/bauen/geoportal/digitaler-zwilling-mobilitaet-und-umwelt/",
+      "projectActive": true
+    },
+    {
+      "projectName": "Digitaler Zwilling der Stadt Sulzbach-Rosenberg",
+      "projectLocation": "Sulzbach-Rosenberg",
+      "projectCountry": "Deutschland",
+      "projectInfrastructure": "Urbaner Digitaler Zwilling",
+      "projectLevel": "Deskriptiv",
+      "projectLatitude": "49.5126",
+      "projectLongitude": "11.7408",
+      "projectLink": "https://www.suro.city/der-digitale-zwilling-ist-ab-sofort-online-verfuegbar//",
+      "projectActive": true
     }
 ]

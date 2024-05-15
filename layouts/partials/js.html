@@ -1,6 +1,3 @@
-<script src="/js/jquery-3.3.1.min.js"></script>
-<script src="/js/bootstrap.bundle.min.js"></script>
-<script src="/js/leaflet.bundle.min.js"></script>
 <script>
     $(document).ready(function() {
         const items = $('.sItem'); 
@@ -9,6 +6,8 @@
         const startLat = 51.1642;
         const startLon = 10.4541;
 
+        console.log('Document ready, initializing map...');
+        
         var mymap = L.map('map', {scrollWheelZoom: false}).setView([startLat, startLon], startZoom);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -47,18 +46,20 @@
                 markers.eachLayer(function(layer) {
                     if(layer.options.key === id) {
                         mymap.setView([pLat,pLon], 12); 
-                        layer.openPopup()
+                        layer.openPopup();
                     }
                 });
             }
         });
 
         window.resetMap = function() {
+            console.log('Resetting map...');
             mymap.closePopup();
             mymap.setView([startLat, startLon], startZoom);
         };
 
         window.findProject = function() {
+            console.log('Finding project...');
             const searchInput = $('#projectfinder');
             const hidden = 'sItem--hidden';
             const result = $('#result');
@@ -92,6 +93,7 @@
         };
 
         window.clearSearch = function() {
+            console.log('Clearing search...');
             document.getElementById('projectfinder').value = '';
             findProject();
             resetMap();

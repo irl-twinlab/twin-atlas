@@ -2,117 +2,103 @@
 <script src="/js/bootstrap.bundle.min.js"></script>
 <script src="/js/leaflet.bundle.min.js"></script>
 <script>
-    // definitions
-    const items = $('.sItem'); // all projects in the list
-    const item = $('.sItem--offline'); // each project
-    const startZoom = 6; //Define zoom level - 13 = default | 19 = max
-    const startLat = 51.1642;
-    const startLon = 10.4541;
-    // create Map
-    var mymap = L.map('map', {scrollWheelZoom: false}).setView([startLat, startLon], startZoom);
-    // Add tiles
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors | <a href="javascript:resetMap();">Reset map</a>'
-    }).addTo(mymap);
+    $(document).ready(function() {
+        const items = $('.sItem'); 
+        const item = $('.sItem--offline'); 
+        const startZoom = 6; 
+        const startLat = 51.1642;
+        const startLon = 10.4541;
 
-    // add GPS find me button
-    L.control.locate().addTo(mymap);
+        var mymap = L.map('map', {scrollWheelZoom: false}).setView([startLat, startLon], startZoom);
 
-    // zoom options enable/disable
-    mymap.on('click', () => { mymap.scrollWheelZoom.disable();});
-    mymap.on('mouseout', () => { mymap.scrollWheelZoom.enable();});
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors | <a href="javascript:resetMap();">Reset map</a>'
+        }).addTo(mymap);
 
-    // create marker cluster layer
-    var markers = L.markerClusterGroup();
+        L.control.locate().addTo(mymap);
 
-    // iterate projects, add markers to map
-    for(let i = 0; i < items.length; i++) {
-        let iLat = items[i].getAttribute('data-lat');
-        let iLon = items[i].getAttribute('data-lon');
+        mymap.on('click', () => { mymap.scrollWheelZoom.disable();});
+        mymap.on('mouseout', () => { mymap.scrollWheelZoom.enable();});
 
-        if(!isEmpty(iLat) | !isEmpty(iLon)) {
-            // get popup info
-            let name = items[i].getAttribute('data-name');
-            let inf = items[i].getAttribute('data-inf');
-            let lin = items[i].getAttribute('data-link');
-            // create marker with associated popup
-            markers.addLayer(L.marker([iLat,iLon],{key:iLat+'__'+iLon}).bindPopup("<b>" + name + "</b>" + "<br>" + inf + "<br>" + '<a href="' + lin + '" target="_blank">Mehr Informationen</a>' )); // marker added to cluster layer
-            // we use an ID made up of iLat and iLon here, so we can find the marker again later
-        }
-    }
+        var markers = L.markerClusterGroup();
 
-    // add clustered markers to map
-    mymap.addLayer(markers);
+        for(let i = 0; i < items.length; i++) {
+            let iLat = items[i].getAttribute('data-lat');
+            let iLon = items[i].getAttribute('data-lon');
 
-    // handle item clicks
-    item.click(function(){
-        let ct = $(this);
-        let pt = ct.parent(); // the data-* attributes are with the parent <div>
-        let pLat = pt.attr('data-lat');
-        let pLon = pt.attr('data-lon');
-        let id = pLat + '__' + pLon;
-
-        if(!isEmpty(pLat) | !isEmpty(pLon)) {
-            // find the correct marker
-            markers.eachLayer(function(layer) {
-                if(layer.options.key === id) {
-                    mymap.setView([pLat,pLon], 12); // move to the selected item and zoom in
-                    layer.openPopup()
-                }
-            });
-        }
-    });
-
-    // reset map
-    function resetMap() {
-        mymap.closePopup();
-        mymap.setView([startLat, startLon], startZoom);
-    }
-
-    // project search
-    function findProject() {
-        const searchInput = $('#projectfinder');
-        const hidden = 'sItem--hidden';
-        const result = $('#result');
-    
-        let filter = searchInput.val().toUpperCase();
-        let count = 0; 
-    
-        // Clear existing markers from the map
-        markers.clearLayers();
-    
-        for (let i = 0; i < items.length; i++) {
-            let inf = items[i].getAttribute('data-inf').toUpperCase();
-            let loc = items[i].getAttribute('data-loc').toUpperCase();
-            if (inf.indexOf(filter) > -1 || loc.indexOf(filter) > -1) { 
-                items[i].classList.remove(hidden);
-                let iLat = items[i].getAttribute('data-lat');
-                let iLon = items[i].getAttribute('data-lon');
-                if (!isEmpty(iLat) && !isEmpty(iLon)) {
-                    let name = items[i].getAttribute('data-name');
-                    let lin = items[i].getAttribute('data-link');
-                    markers.addLayer(L.marker([iLat, iLon], {key: iLat + '__' + iLon}).bindPopup("<b>" + name + "</b>" + "<br>" + inf + "<br>" + '<a href="' + lin + '" target="_blank">Mehr Informationen</a>'));
-                    count++;
-                }
-            } else { 
-                items[i].classList.add(hidden);
+            if(!isEmpty(iLat) | !isEmpty(iLon)) {
+                let name = items[i].getAttribute('data-name');
+                let inf = items[i].getAttribute('data-inf');
+                let lin = items[i].getAttribute('data-link');
+                markers.addLayer(L.marker([iLat,iLon],{key:iLat+'__'+iLon}).bindPopup("<b>" + name + "</b>" + "<br>" + inf + "<br>" + '<a href="' + lin + '" target="_blank">Mehr Informationen</a>' )); 
             }
         }
-        // Add filtered markers to the map
+
         mymap.addLayer(markers);
-    
-        result.html(count + ' Projekte - <a href="javascript:clearSearch();">Zurücksetzen</a>'); 
-    }
 
-    // clear search
-    function clearSearch() {
-        document.getElementById('projectfinder').value = '';
-        findProject();
-        resetMap();
-    }
+        item.click(function(){
+            let ct = $(this);
+            let pt = ct.parent(); 
+            let pLat = pt.attr('data-lat');
+            let pLon = pt.attr('data-lon');
+            let id = pLat + '__' + pLon;
 
-    // validate string values
-    function isEmpty(str) {
-        return (!str || 0 === str.length);
-    }
+            if(!isEmpty(pLat) | !isEmpty(pLon)) {
+                markers.eachLayer(function(layer) {
+                    if(layer.options.key === id) {
+                        mymap.setView([pLat,pLon], 12); 
+                        layer.openPopup()
+                    }
+                });
+            }
+        });
+
+        window.resetMap = function() {
+            mymap.closePopup();
+            mymap.setView([startLat, startLon], startZoom);
+        };
+
+        window.findProject = function() {
+            const searchInput = $('#projectfinder');
+            const hidden = 'sItem--hidden';
+            const result = $('#result');
+
+            let filter = searchInput.val().toUpperCase();
+            let count = 0;
+
+            markers.clearLayers();
+
+            for (let i = 0; i < items.length; i++) {
+                let inf = items[i].getAttribute('data-inf').toUpperCase();
+                let loc = items[i].getAttribute('data-loc').toUpperCase();
+                if (inf.indexOf(filter) > -1 || loc.indexOf(filter) > -1) {
+                    items[i].classList.remove(hidden);
+                    let iLat = items[i].getAttribute('data-lat');
+                    let iLon = items[i].getAttribute('data-lon');
+                    if (!isEmpty(iLat) && !isEmpty(iLon)) {
+                        let name = items[i].getAttribute('data-name');
+                        let lin = items[i].getAttribute('data-link');
+                        markers.addLayer(L.marker([iLat, iLon], {key: iLat + '__' + iLon}).bindPopup("<b>" + name + "</b>" + "<br>" + inf + "<br>" + '<a href="' + lin + '" target="_blank">Mehr Informationen</a>'));
+                        count++;
+                    }
+                } else {
+                    items[i].classList.add(hidden);
+                }
+            }
+
+            mymap.addLayer(markers);
+
+            result.html(count + ' Projekte - <a href="javascript:clearSearch();">Zurücksetzen</a>');
+        };
+
+        window.clearSearch = function() {
+            document.getElementById('projectfinder').value = '';
+            findProject();
+            resetMap();
+        };
+
+        function isEmpty(str) {
+            return (!str || 0 === str.length);
+        }
+    });
 </script>

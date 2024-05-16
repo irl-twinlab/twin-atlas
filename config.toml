@@ -1,5 +1,5 @@
 # SETUP
-baseurl = ""
+baseurl = "https://irl-twinlab.github.io/twin-atlas/"
 publishdir = "public"
 canonifyUrls = "true"
 disableKinds = ["RSS","taxonomy","taxonomyTerm","sitemap"]

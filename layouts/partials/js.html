@@ -95,7 +95,8 @@
         for (let i = 0; i < items.length; i++) {
             let inf = items[i].getAttribute('data-inf').toUpperCase();
             let loc = items[i].getAttribute('data-loc').toUpperCase();
-            if (inf.indexOf(filter) > -1 || loc.indexOf(filter) > -1) { 
+            let nam = items[i].getAttribute('data-name').toUpperCase();
+            if (inf.indexOf(filter) > -1 || loc.indexOf(filter) > -1 || nam.indexOf(filter) > -1) { 
                 items[i].classList.remove(hidden);
                 let iLat = items[i].getAttribute('data-lat');
                 let iLon = items[i].getAttribute('data-lon');

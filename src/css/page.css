@@ -113,7 +113,7 @@ body {
 }
 
 .project-container {
-    max-height: 50vh;
+    height: 50vh;
     overflow-y: auto;
 }
 
@@ -161,8 +161,3 @@ body {
 .gps-marker::after {
     content: "📍";
 }
-
-/* Default icon URLs */
-.leaflet-default-icon-path {
-	background-image: url(/img/marker-icon.png);
-	}

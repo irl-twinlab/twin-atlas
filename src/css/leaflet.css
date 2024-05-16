@@ -383,7 +383,7 @@
 
 /* Default icon URLs */
 .leaflet-default-icon-path {
-	background-image: url(/img/marker-icon.png);
+	background-image: url('{{ "/img/marker-icon.png" | relURL }}');
 	}
 
 

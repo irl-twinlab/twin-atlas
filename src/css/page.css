@@ -154,7 +154,7 @@ body {
 
 @media(min-width:1024px) {
     .project-container {
-        max-height: 50vh;
+       height: 50vh;
     }
 }
 

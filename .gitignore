@@ -106,3 +106,6 @@ dist
 # Output
 public/
 .DS_Store
+package-lock.json
+public/index.html
+public/css/leaflet.bundle.css

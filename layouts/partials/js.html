@@ -8,17 +8,18 @@
     const startZoom = 6; //Define zoom level - 13 = default | 19 = max
     const startLat = 51.1642;
     const startLon = 10.4541;
+    
     // create Map
     var mymap = L.map('map', {scrollWheelZoom: false}).setView([startLat, startLon], startZoom);
     var normalIcon = L.icon({
         iconUrl: './img/marker-icon.png',
         shadowUrl: './img/marker-shadow.png',
 
-        iconSize:[25,41],
-        iconAnchor:[12,41],
-        popupAnchor:[1,-34],
-        tooltipAnchor:[16,-28],
-        shadowSize:[41,41]
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        tooltipAnchor: [16, -28],
+        shadowSize: [41, 41]
     });
     
     // Add tiles
@@ -41,14 +42,20 @@
         let iLat = items[i].getAttribute('data-lat');
         let iLon = items[i].getAttribute('data-lon');
 
-        if(!isEmpty(iLat) | !isEmpty(iLon)) {
+        if(!isEmpty(iLat) && !isEmpty(iLon)) {
             // get popup info
             let name = items[i].getAttribute('data-name');
             let inf = items[i].getAttribute('data-inf');
             let lin = items[i].getAttribute('data-link');
+            
             // create marker with associated popup
-            markers.addLayer(L.marker([iLat,iLon],{icon: normalIcon}, {key:iLat+'__'+iLon}).bindPopup("<b>" + name + "</b>" + "<br>" + inf + "<br>" + '<a href="' + lin + '" target="_blank">Mehr Informationen</a>' )); // marker added to cluster layer
-            // we use an ID made up of iLat and iLon here, so we can find the marker again later
+            let marker = L.marker([iLat, iLon], {icon: normalIcon});
+            marker.options.key = iLat + '__' + iLon;
+            marker.bindPopup("<b>" + name + "</b>" + "<br>" + inf + "<br>" + '<a href="' + lin + '" target="_blank">Mehr Informationen</a>');
+                        
+            markers.addLayer(marker); // marker added to cluster layer
+        } else {
+            console.warn("Empty latitude or longitude for item index:", i);
         }
     }
 
@@ -63,14 +70,16 @@
         let pLon = pt.attr('data-lon');
         let id = pLat + '__' + pLon;
 
-        if(!isEmpty(pLat) | !isEmpty(pLon)) {
+        if(!isEmpty(pLat) && !isEmpty(pLon)) {
             // find the correct marker
             markers.eachLayer(function(layer) {
                 if(layer.options.key === id) {
-                    mymap.setView([pLat,pLon], 12); // move to the selected item and zoom in
-                    layer.openPopup()
+                    mymap.setView([pLat, pLon], 12); // move to the selected item and zoom in
+                    layer.openPopup();
                 }
             });
+        } else {
+            console.warn("Empty latitude or longitude for clicked item");
         }
     });
 
@@ -87,8 +96,8 @@
         const result = $('#result');
     
         let filter = searchInput.val().toUpperCase();
-        let count = 0; 
-    
+        let count = 0;
+        
         // Clear existing markers from the map
         markers.clearLayers();
     
@@ -103,8 +112,13 @@
                 if (!isEmpty(iLat) && !isEmpty(iLon)) {
                     let name = items[i].getAttribute('data-name');
                     let lin = items[i].getAttribute('data-link');
-                    markers.addLayer(L.marker([iLat, iLon],{icon: normalIcon}, {key: iLat + '__' + iLon}).bindPopup("<b>" + name + "</b>" + "<br>" + inf + "<br>" + '<a href="' + lin + '" target="_blank">Mehr Informationen</a>'));
+                    let marker = L.marker([iLat, iLon], {icon: normalIcon});
+                    marker.options.key = iLat + '__' + iLon;
+                    marker.bindPopup("<b>" + name + "</b>" + "<br>" + inf + "<br>" + '<a href="' + lin + '" target="_blank">Mehr Informationen</a>');
+                    markers.addLayer(marker);
                     count++;
+                } else {
+                    console.warn("Empty latitude or longitude for item index:", i);
                 }
             } else { 
                 items[i].classList.add(hidden);
@@ -113,7 +127,7 @@
         // Add filtered markers to the map
         mymap.addLayer(markers);
     
-        result.html(count + ' Projekte - <a href="javascript:clearSearch();">Zurücksetzen</a>'); 
+        result.html(count + ' Projekte - <a href="javascript:clearSearch();">Zurücksetzen</a>');
     }
 
     // clear search
@@ -125,6 +139,10 @@
 
     // validate string values
     function isEmpty(str) {
-        return (!str || 0 === str.length);
+        return (!str || str.length === 0);
     }
+
+    // Add event listeners for debugging
+    document.getElementById('projectfinder').addEventListener('input', function() {
+    });
 </script>

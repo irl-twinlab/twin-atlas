@@ -10,6 +10,17 @@
     const startLon = 10.4541;
     // create Map
     var mymap = L.map('map', {scrollWheelZoom: false}).setView([startLat, startLon], startZoom);
+    var normalIcon = L.icon({
+        iconUrl: 'marker-icon.png',
+        shadowUrl: 'marker-icon.png',
+    
+        iconSize:     [38, 95], // size of the icon
+        shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+        shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+    });
+    
     // Add tiles
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors | <a href="javascript:resetMap();">Reset map</a>'
@@ -36,7 +47,7 @@
             let inf = items[i].getAttribute('data-inf');
             let lin = items[i].getAttribute('data-link');
             // create marker with associated popup
-            markers.addLayer(L.marker([iLat,iLon],{key:iLat+'__'+iLon}).bindPopup("<b>" + name + "</b>" + "<br>" + inf + "<br>" + '<a href="' + lin + '" target="_blank">Mehr Informationen</a>' )); // marker added to cluster layer
+            markers.addLayer(L.marker([iLat,iLon],{icon: normalIcon}, {key:iLat+'__'+iLon}).bindPopup("<b>" + name + "</b>" + "<br>" + inf + "<br>" + '<a href="' + lin + '" target="_blank">Mehr Informationen</a>' )); // marker added to cluster layer
             // we use an ID made up of iLat and iLon here, so we can find the marker again later
         }
     }
@@ -91,7 +102,7 @@
                 if (!isEmpty(iLat) && !isEmpty(iLon)) {
                     let name = items[i].getAttribute('data-name');
                     let lin = items[i].getAttribute('data-link');
-                    markers.addLayer(L.marker([iLat, iLon], {key: iLat + '__' + iLon}).bindPopup("<b>" + name + "</b>" + "<br>" + inf + "<br>" + '<a href="' + lin + '" target="_blank">Mehr Informationen</a>'));
+                    markers.addLayer(L.marker([iLat, iLon],{icon: normalIcon}, {key: iLat + '__' + iLon}).bindPopup("<b>" + name + "</b>" + "<br>" + inf + "<br>" + '<a href="' + lin + '" target="_blank">Mehr Informationen</a>'));
                     count++;
                 }
             } else { 
